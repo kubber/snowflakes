@@ -107,7 +107,6 @@ function love.update()
       levelUpCounter = 0
     end 
   end 
-
 end 
 
 
