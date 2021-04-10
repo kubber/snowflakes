@@ -21,6 +21,7 @@ function love.load()
     flakes = {}
 end
 
+
 function createFlake()
     flake = {}
     flake.x = math.random(love.graphics.getWidth())
@@ -31,11 +32,13 @@ function createFlake()
     return flake
 end
 
+
 function makeFlakes(amount)
     for i=1, amount do 
         table.insert(flakes, createFlake())
     end
 end 
+
 
 function drawFlake(i)
   flake = flakes[i]  
@@ -70,6 +73,7 @@ function drawHUD()
   love.graphics.setFont(love.graphics.newFont(initialFontSize))
 end
 
+
 function drawLevelUp()
     if displayLevelUp then 
       love.graphics.setFont(love.graphics.newFont((levelUpCounter+1)*2))
@@ -78,19 +82,16 @@ function drawLevelUp()
     end 
 end
 
-function love.draw(dt)
-    
-    drawLevelUp()
 
+function love.draw(dt)    
+    drawLevelUp()
     for i=#flakes,1,-1 do 
       drawFlake(i)
     end
-
     drawHUD()
 end 
 
 function love.update()
-
   if #flakes >= level.goal then 
     level.goal = math.floor(level.goal * 1.5)
     level.random = math.floor(level.random * 1.3)    
@@ -109,9 +110,11 @@ function love.update()
 
 end 
 
+
 function love.mousepressed(x, y, button, istouch)
     makeFlakes(math.random(level.random))
 end
+
 
 function love.keypressed(key, scancode, isrepeat)
     if key == "escape" then
